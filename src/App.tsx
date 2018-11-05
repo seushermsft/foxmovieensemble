@@ -69,6 +69,13 @@ class App extends Component {
   //   this.setState({ duration })
   // }
 
+  setPlaybackRateFast2(e: number) {
+    console.log(e)
+    //this.refs.video.props as Play.playbackRate = 100;
+    this.state.playbackRate = e;
+    this.setState({ playingbackRate: e })
+  }
+
   render() {
     const { url, playing, volume, loaded, duration, playbackRate, played } = this.state
 
@@ -88,6 +95,7 @@ class App extends Component {
                   playbackRate = {playbackRate}
                   onProgress={this.onProgress}
                   //onDuration ={this.onDuration}
+                  ref="video"
               />
             </div>
             <div id="overlay">
@@ -109,7 +117,7 @@ class App extends Component {
                 <td>
                   <h6>Playback Speed</h6>
                   <button onClick={this.setPlaybackRateSlow} value ={.5}>.5</button>
-                  <button onClick={this.setPlaybackRateFast} value ={1.5}>1.5</button>
+                  <button onClick={() => this.setPlaybackRateFast2(3)}>1.5</button>
                 </td>
               </tr>
             </tbody>
